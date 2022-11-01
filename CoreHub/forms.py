@@ -48,6 +48,16 @@ class UpdateUserForm(forms.ModelForm):
         label="A short bio about yourself if you'd like",
         widget=forms.Textarea(attrs={"rows": 3}),
     )
+    userInsta = forms.CharField(
+        required=False,
+        label="Your Instagram Profile Link",
+        widget=forms.TextInput(),
+    )
+    userFacebook = forms.CharField(
+        required=False,
+        label="Paste your Facebook Profile Link:",
+        widget=forms.TextInput(),
+    )
 
     class Meta:
         model = User
@@ -55,6 +65,8 @@ class UpdateUserForm(forms.ModelForm):
             "first_name",
             "last_name",
             "userBio",
+            "userInsta",
+            "userFacebook",
             "userDisplay",
             "userGender",
         )

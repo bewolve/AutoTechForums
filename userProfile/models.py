@@ -27,7 +27,6 @@ class User(AbstractUser):
     userGender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     userInsta = models.TextField(blank=True, null=True)
     userFacebook = models.TextField(blank=True, null=True)
-    userCV = models.FileField(null=True, blank=True, upload_to=upload_file_perUser)
     slug = models.SlugField(null=True, blank=True)
 
     def __str__(self):

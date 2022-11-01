@@ -26,6 +26,7 @@ urlpatterns = [
     path("logout/", views.logoutUser, name="logoutUser"),
     path("admin/", admin.site.urls),
     path("profile/", include("userProfile.urls")),
+    path("", include("home.urls")),
 ]
 
 

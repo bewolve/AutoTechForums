@@ -3,6 +3,8 @@
 
 {% block content %}
 
+
+
 <section class="hero">
 
   <div class="portfolio-heading">
@@ -11,6 +13,18 @@
     </h1>
     {% if user.slug == request.user.slug %}
     <a href='{% url 'updateUser' %}' class="btn btn-warning">Update Profile</a>
+    <a href='{% url 'followers' %}' class="btn btn-dark">My Followers</a>
+    <a href='{% url 'following' %}' class="btn btn-danger">My Following</a>
+    {% else %}
+
+    {% if exists == False %}
+    <a class='btn btn-success' href="{% url 'addFollowing' user.id %}">Follow @{{user.username}}</a>
+    {% else %}
+    <a class='btn btn-danger' href="{% url 'removeFollowing' user.id %}">Unfollow</a>
+    {% endif %}
+
+
+
     {% endif %}
 
 
@@ -25,12 +39,6 @@
       {% if user.userInsta %}
       <a target="_blank" href="https://www.instagram.com/zaidan.x/"><i class="social-btn  fa fa-instagram fa-2x"
           aria-hidden="true"></i></a>
-      {% endif %}
-
-      {% if user.userCV %}
-      <a target="_blank" href="https://drive.google.com/file/d/1-iR2Q7G_TDRN7CGFlGnpW7YK3xum_vGO"
-        class="btn download-cv">Download
-        CV</a>
       {% endif %}
 
     </div>

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container my-4">
+  <div class="main-header-feed">
+
+
+    <div class="user-friends">
+      <h2>All {{request.user.get_full_name}} Followers.</h2>
+
+      <div class="row">
+
+        {% for x in friends %}
+        <div class="card" style="width: 16rem;">
+          <img src="{{x.userDisplay.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'profileHome' x.slug%}">{{x.get_full_name}}</a></h5>
+            <p class="card-text">{{x.userBio|truncatechars:50}}</p>
+            {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+    <div class="recently-joined">
+      <h3>Newly Joined Users</h3>
+      <hr>
+      {% for i in newusers %}
+      {% if request.user != i %}
+      <div class="each-new-user">
+        <img class='new-user-img' src="{{i.userDisplay.url}}" alt="">
+        <div>
+          <h6><a href="{% url 'profileHome' i.slug%}">{{i.get_full_name}}</a></h6>
+          <p>{{i.userBio|truncatechars:15}}</p>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% comment %} END RECENTLY JOINED {% endcomment %}
+
+  </div>
+  {% comment %} END MAIN HEADER FEED {% endcomment %}
+
+</div>
+{% comment %} END CONTAINER {% endcomment %}
+
+{% endblock content %}
