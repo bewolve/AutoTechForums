@@ -13,8 +13,8 @@
     </h1>
     {% if user.slug == request.user.slug %}
     <a href='{% url 'updateUser' %}' class="btn btn-warning">Update Profile</a>
-    <a href='{% url 'followers' %}' class="btn btn-dark">My Followers</a>
-    <a href='{% url 'following' %}' class="btn btn-danger">My Following</a>
+    <a href='{% url 'followers' %}' class="btn btn-dark">My Followers ({{followers|length}})</a>
+    <a href='{% url 'following' %}' class="btn btn-danger">My Following ({{followings|length}})</a>
     {% else %}
 
     {% if exists == False %}
@@ -33,11 +33,11 @@
     <div class="social-links">
 
       {% if user.userFacebook %}
-      <a target="_blank" href="https://www.facebook.com/profile.php?id=100077979561015"><i
-          class="social-btn  fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+      <a target="_blank" href="{{user.userFacebook}}"><i class="social-btn  fa fa-facebook-square fa-2x"
+          aria-hidden="true"></i></a>
       {% endif %}
       {% if user.userInsta %}
-      <a target="_blank" href="https://www.instagram.com/zaidan.x/"><i class="social-btn  fa fa-instagram fa-2x"
+      <a target="_blank" href="{{user.userInsta}}"><i class="social-btn  fa fa-instagram fa-2x"
           aria-hidden="true"></i></a>
       {% endif %}
 

@@ -26,6 +26,10 @@ a {
   align-items: center;
 }
 
+.navbar-brand {
+  font-size: 30px;
+}
+
 .navbar-item {
   color: #EEEBDD;
   text-decoration: none;

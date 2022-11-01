@@ -143,3 +143,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 #  MY ADDED FIELDS
 AUTH_USER_MODEL = "userProfile.User"
+
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+}

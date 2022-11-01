@@ -3,7 +3,7 @@ from userProfile.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, login, authenticate
-
+from django.contrib import messages
 
 from .forms import UserMakeForm, UpdateUserForm
 
@@ -22,7 +22,8 @@ def registerUser(request):
             form = UserMakeForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
-
+            else:
+                messages.error(request, "There was an error registering user.")
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password1")
             user = authenticate(username=username, password=password)
@@ -43,7 +44,7 @@ def updateUser(request):
         form = UpdateUserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
-            return redirect("profileHome", request.user.slug)
+            messages.success(request, "Profile Updated Successfully...")
     context = {"form": form}
     return render(request, "authentication/update.html", context)
 

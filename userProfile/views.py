@@ -7,11 +7,18 @@ from friendship.models import Follow
 @login_required(login_url="loginUser")
 def profileHome(request, slug):
     user = User.objects.get(slug=slug)
+    followers = Follow.objects.followers(user)
+    followings = Follow.objects.following(user)
     if user in Follow.objects.following(request.user):
         exists = True
     else:
         exists = False
-    context = {"user": user, "exists": exists}
+    context = {
+        "user": user,
+        "exists": exists,
+        "followers": followers,
+        "followings": followings,
+    }
     return render(request, "profile/profile.html", context)
 
 
