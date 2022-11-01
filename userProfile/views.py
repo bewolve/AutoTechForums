@@ -20,7 +20,7 @@ def following(request):
     friends = Follow.objects.following(request.user)
     new_users = User.objects.all().order_by("-date_joined")[:5]
     context = {"friends": friends, "newusers": new_users}
-    return render(request, "home/following.html", context)
+    return render(request, "profile/following.html", context)
 
 
 @login_required(login_url="loginUser")
@@ -28,7 +28,7 @@ def followers(request):
     friends = Follow.objects.followers(request.user)
     new_users = User.objects.all().order_by("-date_joined")[:5]
     context = {"friends": friends, "newusers": new_users}
-    return render(request, "home/followers.html", context)
+    return render(request, "profile/followers.html", context)
 
 
 @login_required(login_url="loginUser")
