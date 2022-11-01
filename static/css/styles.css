@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #1B1717;
+  background-color: #EEEBDD;
+}
+
+a {
+  color: #1B1717;
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  gap: 20px;
+  background-color: #1B1717;
+  padding: 20px;
+  align-items: center;
+}
+
+.navbar-item {
+  color: #EEEBDD;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.navbar-item:hover {
+  border-bottom: 1px #CE1212 solid;
+}
+
+.navbar .ctn {
+  background-color: #CE1212;
+  padding: 10px 15px;
+  border-radius: 20px;
+  margin-left: auto;
+  border: 0px;
+  transition: opacity 0.3s;
+}
+
+.navbar .ctn:hover {
+  opacity: 0.8;
+}
+
+
+/* END NAVBAR STYLING  */
+
+
+.hero {
+
+
+  padding: 50px 150px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  /* margin: 0 auto;
+  margin-bottom: 10px; */
+  gap: 50px;
+  /* border-bottom: 1px #1B1717 solid; */
+}
+
+.hero img {
+  width: 100%;
+  border-radius: 20px;
+
+}
+
+
+/* END HERO STYLING  */
+
+
+/* START HERO BOX 1 STYLING  */
+
+.portfolio-title {
+
+  font-size: 48px;
+  margin-bottom: 22px;
+}
+
+.portfolio-desc {
+
+  line-height: 1.2;
+  font-size: 18px;
+  margin: 20px 0;
+
+
+}
+
+.portfolio-title span {
+  color: #CE1212;
+}
+
+
+/* SOCIAL LINKS  */
+
+.social-links {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+}
+
+
+.download-cv {
+  background-color: #1B1717;
+  color: #EEEBDD;
+  padding: 8px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.download-cv:hover {
+  background-color: #1C6758;
+}
+
+
+.fa-facebook-square:hover {
+  color: #3b5998;
+}
+
+.fa-instagram:hover {
+  color: #cd486b;
+}
+
+.fa-youtube-play:hover {
+  color: #FF0000;
+}
+
+.social-btn {
+  transition: color 0.3s;
+}
+
+
+/* END HERO SECTION COMPELETELY  */
+
+
+/* START OF CONTACT SECTION  */

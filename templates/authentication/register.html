@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="container my-5">
+  <form action="" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class='btn btn-success'>Submit</button>
+  </form>
+  <p class='mt-4'>Already have an account? <a href="{% url 'loginUser' %}">Login Here</a></p>
+</div>
+
+{% endblock content %}

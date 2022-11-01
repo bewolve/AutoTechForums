@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<section class="hero">
+
+  <div class="portfolio-heading">
+    <h1 class="portfolio-title">
+      < {{user.first_name}} <span>{{user.last_name}} ></span>
+    </h1>
+    {% if user.slug == request.user.slug %}
+    <a href='{% url 'updateUser' %}' class="btn btn-warning">Update Profile</a>
+    {% endif %}
+
+
+    <p class="portfolio-desc">{{user.userBio}}</p>
+
+    <div class="social-links">
+
+      {% if user.userFacebook %}
+      <a target="_blank" href="https://www.facebook.com/profile.php?id=100077979561015"><i
+          class="social-btn  fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+      {% endif %}
+      {% if user.userInsta %}
+      <a target="_blank" href="https://www.instagram.com/zaidan.x/"><i class="social-btn  fa fa-instagram fa-2x"
+          aria-hidden="true"></i></a>
+      {% endif %}
+
+      {% if user.userCV %}
+      <a target="_blank" href="https://drive.google.com/file/d/1-iR2Q7G_TDRN7CGFlGnpW7YK3xum_vGO"
+        class="btn download-cv">Download
+        CV</a>
+      {% endif %}
+
+    </div>
+
+
+  </div>
+
+
+  <img src="{{user.userDisplay.url}}" alt="userProfile">
+
+</section>
+
+{% endblock content %}
