@@ -23,18 +23,20 @@ def profileHome(request, slug):
 
 
 @login_required(login_url="loginUser")
-def following(request):
-    friends = Follow.objects.following(request.user)
+def following(request, slug):
+    user = User.objects.get(slug=slug)
+    friends = Follow.objects.following(user)
     new_users = User.objects.all().order_by("-date_joined")[:5]
-    context = {"friends": friends, "newusers": new_users}
+    context = {"user": user, "friends": friends, "newusers": new_users}
     return render(request, "profile/following.html", context)
 
 
 @login_required(login_url="loginUser")
-def followers(request):
-    friends = Follow.objects.followers(request.user)
+def followers(request, slug):
+    user = User.objects.get(slug=slug)
+    friends = Follow.objects.followers(user)
     new_users = User.objects.all().order_by("-date_joined")[:5]
-    context = {"friends": friends, "newusers": new_users}
+    context = {"user": user, "friends": friends, "newusers": new_users}
     return render(request, "profile/followers.html", context)
 
 
@@ -42,11 +44,11 @@ def followers(request):
 def addFollowing(request, id):
     other_user = User.objects.get(id=id)
     Follow.objects.add_follower(request.user, other_user)
-    return redirect("following")
+    return redirect("following", request.user.slug)
 
 
 @login_required(login_url="loginUser")
 def removeFollowing(request, id):
     other_user = User.objects.get(id=id)
     Follow.objects.remove_follower(request.user, other_user)
-    return redirect("following")
+    return redirect("following", request.user.slug)

@@ -24,8 +24,10 @@ urlpatterns = [
     path("update/", views.updateUser, name="updateUser"),
     path("login/", views.loginUser, name="loginUser"),
     path("logout/", views.logoutUser, name="logoutUser"),
+    path("deleteAccount/", views.delete_account, name="deleteAccount"),
     path("admin/", admin.site.urls),
     path("profile/", include("userProfile.urls")),
+    path("search/", views.search_users, name="searchUser"),
     path("", include("home.urls")),
 ]
 

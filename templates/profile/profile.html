@@ -12,10 +12,15 @@
       < {{user.first_name}} <span>{{user.last_name}} ></span>
     </h1>
     {% if user.slug == request.user.slug %}
-    <a href='{% url 'updateUser' %}' class="btn btn-warning">Update Profile</a>
-    <a href='{% url 'followers' %}' class="btn btn-dark">My Followers ({{followers|length}})</a>
-    <a href='{% url 'following' %}' class="btn btn-danger">My Following ({{followings|length}})</a>
+    <a href='{% url 'updateUser' %}' class="btn btn-danger">Update Profile</a>
+    <a href='{% url 'followers' request.user.slug %}' class="btn btn-dark">My Followers ({{followers|length}})</a>
+    <a href='{% url 'following' request.user.slug %}' class="btn btn-warning">My Following ({{followings|length}})</a>
+
     {% else %}
+    <a href='{% url 'followers' user.slug %}' class="btn btn-dark">Followers
+      ({{followers|length}})</a>
+    <a href='{% url 'following' user.slug%}' class="btn btn-warning">Following
+      ({{followings|length}})</a>
 
     {% if exists == False %}
     <a class='btn btn-success' href="{% url 'addFollowing' user.id %}">Follow @{{user.username}}</a>

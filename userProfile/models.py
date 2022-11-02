@@ -5,9 +5,10 @@ from django.utils.text import slugify
 
 
 def upload_profile_perUser(instance, filename):
+    rand = randint(1 - 200)
     extensionOfFile = filename.split(".")[-1]
-    return "profiles/@{}/display-{}.{}".format(
-        instance.username, instance.first_name, extensionOfFile
+    return "profiles/@{}/display{}-{}.{}".format(
+        instance.username, rand, instance.first_name, extensionOfFile
     )
 
 

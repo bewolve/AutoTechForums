@@ -4,13 +4,14 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
+from django.db.models import Q
 
 from .forms import UserMakeForm, UpdateUserForm
 
 # Create your views here.
 
 
-# REDIRECT TO PROFILE AFTER COMPELETION NEEDED!!!
+# SEARCH FUNCTIONALITY AND USERS SEARCH.
 
 
 def registerUser(request):
@@ -72,3 +73,21 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return redirect("loginUser")
+
+
+@login_required(login_url="loginUser")
+def delete_account(request):
+    user = User.objects.get(id=request.user.id)
+    user.delete()
+    return redirect("loginUser")
+
+
+def search_users(request):
+    q = request.GET.get("q") if request.GET.get("q") is not None else ""
+    allUsers = User.objects.filter(
+        Q(username__icontains=q)
+        | Q(first_name__icontains=q)
+        | Q(last_name__icontains=q)
+    ).exclude(id=request.user.id)
+    context = {"users": allUsers}
+    return render(request, "search.html", context)

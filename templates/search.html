@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container my-3">
+
+  <div class="all-users-box">
+
+    <div class="row">
+
+      {% if users %}
+
+      {% for x in users %}
+
+      <div class="card" style="width: 16rem;">
+        <img src="{{x.userDisplay.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'profileHome' x.slug%}">{{x.get_full_name}}</a></h5>
+          <p class="card-text">{{x.userBio|truncatechars:50}}</p>
+          {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
+        </div>
+      </div>
+
+      {% endfor %}
+
+      {% else %}
+      <h2>No user(s) found...</h2>
+
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock content %}
