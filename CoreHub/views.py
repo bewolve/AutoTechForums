@@ -38,11 +38,10 @@ def registerUser(request):
 
 @login_required(login_url="loginUser")
 def updateUser(request):
-    user = request.user
-    form = UpdateUserForm(instance=user)
+    form = UpdateUserForm(instance=request.user)
 
     if request.method == "POST":
-        form = UpdateUserForm(request.POST, request.FILES, instance=user)
+        form = UpdateUserForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, "Profile Updated Successfully...")

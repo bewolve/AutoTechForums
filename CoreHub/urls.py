@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
+    # FOR USER AUTHENTICATION
     path("register/", views.registerUser, name="registerUser"),
     path("update/", views.updateUser, name="updateUser"),
     path("login/", views.loginUser, name="loginUser"),
@@ -28,6 +29,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("profile/", include("userProfile.urls")),
     path("search/", views.search_users, name="searchUser"),
+    # FOR FEEDS
     path("", include("home.urls")),
 ]
 

@@ -17,16 +17,19 @@
     <a href='{% url 'following' request.user.slug %}' class="btn btn-warning">My Following ({{followings|length}})</a>
 
     {% else %}
-    <a href='{% url 'followers' user.slug %}' class="btn btn-dark">Followers
-      ({{followers|length}})</a>
-    <a href='{% url 'following' user.slug%}' class="btn btn-warning">Following
-      ({{followings|length}})</a>
 
     {% if exists == False %}
     <a class='btn btn-success' href="{% url 'addFollowing' user.id %}">Follow @{{user.username}}</a>
     {% else %}
     <a class='btn btn-danger' href="{% url 'removeFollowing' user.id %}">Unfollow</a>
     {% endif %}
+
+    <a href='{% url 'followers' user.slug %}' class="btn btn-dark">Followers
+      ({{followers|length}})</a>
+    <a href='{% url 'following' user.slug%}' class="btn btn-warning">Following
+      ({{followings|length}})</a>
+
+
 
 
 

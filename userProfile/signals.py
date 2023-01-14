@@ -7,4 +7,4 @@ import os
 @receiver(post_delete, sender=User)
 def delete_pfp_on_User_delete(sender, instance, **kwargs):
     if os.path.isfile(instance.userDisplay.path):
-        os.remove(instance.userDisplay.path)
+        print(instance.image.path)

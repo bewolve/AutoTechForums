@@ -20,10 +20,12 @@
         </li>
         {% endif %}
       </ul>
+      {% if request.user.is_authenticated %}
       <form class="d-flex" role="search" action='{% url 'searchUser' %}'>
         <input class="form-control me-2" name='q' type="search" placeholder="Search Users" aria-label="Search">
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
+      {% endif %}
     </div>
   </div>
 </nav>
